@@ -19,7 +19,7 @@ class Solution {
             while (end < sb.length()) {
                 while (end < sb.length() && sb.charAt(end) == sb.charAt(start)) {
                     end++;
-                }
+                } // same numbers
                 temp.append(end - start);
                 temp.append(sb.charAt(start));
                 start = end;
