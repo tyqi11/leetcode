@@ -2,6 +2,6 @@
 
 ## Lexicographical
 
-Problem: ???
+Problem: 
 
 lexicographical order: dictionary order, alphabetically order
