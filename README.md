@@ -46,3 +46,22 @@ Series of problems with similar way of thinking and implementing.
 | 159  | Longest Substring with At Most Two Distinct Characters | Sliding Window |
 
 Solution reference​:​ [@ndec09](<https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems>)
+
+### Tree Traversal
+
+| No.  | Title    | Method  |
+| ---- | --------------------------------- | --------- |
+| 94   | Binary Tree Inorder Traversal     | Inorder   |
+| 144  | Binary Tree Preorder Traversal    | preorder  |
+| 145  | Binary Tree Postorder Traversal   | postorder |
+| 102  | Binary Tree Level Order Traversal | DFS + BFS |
+| 107 | Binary Tree Level Order Traversal II | BFS |
+| 314 | Binary Tree Vertical Order Traversal |  |
+| 103 | Binary Tree Zigzag Level Order Traversal | BFS |
+| 429   | N-ary Tree Inorder Traversal     | Inorder   |
+| 589  | N-ary Tree Preorder Traversal    | preorder  |
+| 590  | N-ary Tree Postorder Traversal   | postorder |
+
+
+
+
