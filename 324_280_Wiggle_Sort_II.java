@@ -1,4 +1,5 @@
 /*
+
 1. According to the post @StepanPochman https://leetcode.com/discuss/76965/3-lines-python-with-explanation-proof, 
 we should put elements i:
 (1) if i < median, put into the last even slots;
@@ -15,8 +16,8 @@ So for an index i growing from 0 to n - 1, we do not care the element nums[oldIn
 we only care about nums[newIndex], and make changes also according to the new index.
 
 3. There are many ways to find the median of a unsorted array of integers. The time 
-complexity of the wiggleSort may depend on the sorting time complexity. For average
-cases, QuickSort takes O(n).
+complexity of the wiggleSort may depend on the sorting time complexity. 
+
 */
 
 class Solution {
@@ -53,7 +54,7 @@ class Solution {
         nums[j] = temp;
     }
     
-    // if QuickSort, O(n) for average case
+    // if QuickSort, O(n) for average case ? best case O(n), worst case O(n^2)
     // here O(nlogn) using heap
     private double findMedian(int[] nums) {
         PriorityQueue<Integer> small = new PriorityQueue<>(new Comparator<Integer>() {
