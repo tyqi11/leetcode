@@ -12,9 +12,9 @@
 | **Remove**  | remove()         | poll()                |
 | **Examine** | element()        | peek()                |
 
-## PriorityQueue
+### PriorityQueue
 
-`PriorityQueue<Integer> pq = new PriorityQueue<>();`
+`Queue<Integer> pq = new PriorityQueue<>();`
 
 ```java
 PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
@@ -29,7 +29,9 @@ The elements of the priority queue are ordered according to their natural orderi
 
 **Note that this implementation is not synchronized.** 
 
-This implementation provides O(logn) time for the enqueuing and dequeuing methods (`offer`, `poll`, `remove()` and `add`); linear time for the `remove(Object)` and `contains(Object)`methods; and constant time for the retrieval methods (`peek`, `element`, and `size`).
+This implementation provides $$O(logn)$$ time for the enqueuing and dequeuing methods (`offer`, `poll`, `remove()` and `add`); linear time for the `remove(Object)` and `contains(Object)`methods; and constant time for the retrieval methods (`peek`, `element`, and `size`).
+
+==(Note: remove Object is O(n))==
 
 ## Stack
 
@@ -108,6 +110,24 @@ A collection that contains no duplicate elements, and at most one null element. 
 | `s.remove(Object o)`   | remove if it is present, return boolean       |
 | `s.size()`             | return the number of elelments                |
 | `s.toArray()`          | return an array containing all the elements   |
+
+### TreeSet
+
+A `NavigableSet` implementation based on a `TreeMap`. 
+
+This implementation provides guaranteed log(n) time cost for the basic operations (`add`, `remove` and `contains`).
+
+**Note that this implementation is not synchronized.**
+
+| Method                            | Description                                                  |
+| --------------------------------- | ------------------------------------------------------------ |
+| `s.ceiling(E e)` / `s.floor(E e)` | return the least element $$\geq / \leq$$ *e*, return null if no such element |
+| `s.first()` / `s.last()`          | return the first(lowest)/last(highest) element in this set   |
+| `s.higher()` / `s.lower()`        | return the least element $$> / <$$ *e*, return null if no such element |
+| `s.pollFirst()` / `s.pollLast()`  | retrieve and remove the first(lowest)/ last(highest) element in this set |
+|                                   |                                                              |
+|                                   |                                                              |
+|                                   |                                                              |
 
 
 
