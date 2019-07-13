@@ -13,8 +13,6 @@ Logic and implementation from @Tushar Roy: https://www.youtube.com/watch?v=LPFhl
 
 */
 
-// Solution 2: binary search
-
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
