@@ -121,9 +121,9 @@ This implementation provides guaranteed log(n) time cost for the basic operation
 
 | Method                            | Description                                                  |
 | --------------------------------- | ------------------------------------------------------------ |
-| `s.ceiling(E e)` / `s.floor(E e)` | return the least element $$\geq / \leq$$ *e*, return null if no such element |
+| `s.ceiling(E e)` / `s.floor(E e)` | return the least element >= / <= *e*, return null if no such element |
 | `s.first()` / `s.last()`          | return the first(lowest)/last(highest) element in this set   |
-| `s.higher()` / `s.lower()`        | return the least element $$> / <$$ *e*, return null if no such element |
+| `s.higher()` / `s.lower()`        | return the least element > / < *e*, return null if no such element |
 | `s.pollFirst()` / `s.pollLast()`  | retrieve and remove the first(lowest)/ last(highest) element in this set |
 |                                   |                                                              |
 |                                   |                                                              |
@@ -230,15 +230,6 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 
 
 # Algorithms
-
-## Binary Search
-
-* How to decide `while (left < right)` , `while (left <= right)` or `while (left + 1 < right)`?
-  * 
-
-
-
-
 
 ## Backtracking
 
