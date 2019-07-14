@@ -1,4 +1,8 @@
 /*
+# Binary Search
+
+1. The valid range of K is from 1 to the maximum pile. So we change this problem
+to find the minimum K in a sorted array of 1 to maxPile. We use binary search.
 
 */
 
@@ -13,7 +17,7 @@ class Solution {
         while (low < high) {
             int K = low + (high - low) / 2;
             if (canEatAll(piles, K, H)) {
-                high = K ;
+                high = K;
             } else {
                 low = K + 1;
             }
@@ -36,6 +40,6 @@ class Solution {
 }
 
 /*
-Time complexity: O(nlogn)
+Time complexity: O(nlogn), n times of binary search
 Space complexity: O(1)
 */
