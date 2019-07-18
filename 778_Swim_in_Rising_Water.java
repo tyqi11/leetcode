@@ -50,8 +50,8 @@ class Solution {
 }
 
 /*
-Time complexity: O(n^2*logn), n^2 elements, n^2 times of O(logn) pq.offer()
-Space complexity: O(n^2), for the visited array
+Time complexity: O(n*logn), n elements, n times of O(logn) pq.offer()
+Space complexity: O(n), for the visited array
 */
 
 /************************************************************/
@@ -96,6 +96,6 @@ class Solution {
 }
 
 /*
-Time complexity: O(n^2*logn), n^2 times of O(logn) binary search
-Space complexity: O(n^2), for the visited array
+Time complexity: O(n*logn), n times of O(logn) binary search
+Space complexity: O(n), for the visited array
 */
