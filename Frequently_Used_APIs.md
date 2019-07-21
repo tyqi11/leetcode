@@ -33,7 +33,7 @@ This implementation provides $$O(logn)$$ time for the enqueuing and dequeuing me
 
 ==(Note: remove Object is O(n))==
 
-## Stack
+### Stack (Deque)
 
 `Deque<Integer> stack = new ArrayDeque<>();`
 
@@ -159,6 +159,22 @@ Implementation: HashMap, Hashtable, LinkedHashMap, TreeMap
 | `m.higherKey(K key)` / `m.lowerKey(K key)`                   | return **the least key strictly greater than**/**the greatest key strictly less than** then given key |
 | `m.headMap(K toKey, boolean inclusive)` / `m.tailMap(K fromKey)` | return a view of the portion of this map whose keys are strictly less than (or equal to, if *inclusive* is true, default false) *toKey*. (similar logic to tailMap) |
 
+## Tree
+
+### Trie
+
+Trie (pronounce "try") or Prefix Tree is a tree data structure, which is used for retrieval of a key in a dataset of strings. 
+
+[Detailed explanation](https://leetcode.com/articles/implement-trie-prefix-tree/)
+
+Related problems:
+
+[208. Implement Trie (Prefix Tree)](<https://leetcode.com/problems/implement-trie-prefix-tree/>)
+
+[211. Add and Search Word - Data structure design](<https://leetcode.com/problems/add-and-search-word-data-structure-design/>)
+
+[212. Word Search II](<https://leetcode.com/problems/add-and-search-word-data-structure-design/>)
+
 ## String
 
 `String str = "hello";`
@@ -227,17 +243,7 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 |                                |             |
 |                                |             |
 
-
-
 # Algorithms
-
-## Backtracking
-
-3 Keys:
-
-* Our choice
-* Our Constraints
-* Our Goal
 
 ## Bit manipulation
 

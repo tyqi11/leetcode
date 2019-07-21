@@ -1,8 +1,8 @@
 # LeetCodeExplanation
 
-(TO BE COMPLETED)
+This repository shows how I think of the solutions to problems on LeetCode and how I want to explain them to the others(including interviewers). 
 
-How I want to explain to the interviewers when answer LeetCode questions.
+All the solutions are in Java.
 
 ## Must-Masters
 
@@ -70,22 +70,46 @@ using [Threaded Binary Tree](https://en.wikipedia.org/wiki/Threaded_binary_tree)
 
 Problems: 94, 144, 145, 99 (Recover Binary Search Tree)
 
-## Math
+### Topological Sort
 
-1. log(1) + log(2) + ... + log(n - 1) + log(n) <= log(n) + log(n) + ... + log(n) = nlog(n)
+Learn the algorithm at University of Washington [CSE326 Data Structure](<https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf>)
 
-   (lower bound: log(n!) >= n/2 * log(n / 2)​)
+| No.  | Title           |
+| ---- | --------------- |
+| 207  | Course Schedule |
+|      |                 |
+|      |                 |
+|      |                 |
 
-2. 
 
-## Tiny Tips
 
-#### Binary Search terminal condition
+## Tiny-Tips
+
+### Binary Search terminal condition
 
 1. If the target you want surely exists and you want the index at the end, use `while (left < right)`. There will be only one element left and it is the target.
 2. If you may return the value during the search, use `while (left <= right)`
 
+Problems to learn Binary Search: 
 
+1. 35
+2. 33
+
+### Bit manipulation
+
+### Graph and Tree
+
+[Tree in graph theory](<https://leetcode.com/problems/minimum-height-trees/discuss/76055/Share-some-thoughts>) by @dietpepsi
+
+
+
+## Templates
+
+* [Union-Find]([template]Union-Find.java), shown as an answer to Problem 547. Friend Circles
+
+* 
+
+  
 
 # end
 
