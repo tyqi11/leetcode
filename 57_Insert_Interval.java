@@ -6,6 +6,10 @@ overlapping between one inverval and the newInterval, and where is the end.
 We record the place where we need to add the overlapping interval. Before and 
 after that, we simply get and add the interval from the array.
 
+2. As we need to add the newInterval in the middle of a list, it might be better
+to use LinkedList than ArrayList. In ArrayList, if we add one at 4, all the elements
+after 4 will be moved one place after.
+
 */
 
 
@@ -14,7 +18,7 @@ class Solution {
         if (intervals.length == 0) {
             return new int[][]{newInterval};
         }
-        List<int[]> list = new ArrayList<>();
+        List<int[]> list = new LinkedList<>();
         int pos = 0; // record the position to add newInterval
         for (int[] interval : intervals) {
             if (interval[1] < newInterval[0]) {
