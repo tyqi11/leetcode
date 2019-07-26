@@ -1,19 +1,22 @@
 /*
+# Dynamic Programming
 
-1. At each gas station, we have *tank* amount of gas in our tank, accumulating from 
-station *start*. And the accumulation from index i to start is *pre*.
+1. At each gas station, we have *tank* amount of gas in our tank, accumulating 
+from station *start*. And the accumulation from 0 to potential start is *pre*.
 
-2. To go from i to i+1, there should be: tank = tank + gas[i] - cost[i] > 0.
-If tank < 0, we need to change the start point from start to i + 1, because the 
-accumulation from start to i + 1 has a negative impact on future travel. And at the 
-same time, we do pre += tank to add the accumulation in this part to all the previous
-storage. Then reset tank to 0.
+2. To go from i to i+1, there should be: tank += gas[i] - cost[i] > 0. 
+If tank > 0, we continue moving to the next station.
+If tank < 0, we cannot move to the next, and the accumulation between [start, i] 
+has a negative impact on future travel. So we set start = i + 1. And pre += tank 
+to add the accumulation during this part. Then reset tank to 0.
 
-3. Iterate over all the gas stations. When we reach the last station, we get the last 
-*start* point that is not considered impossible, and the accumulation from 0 to the 
-start point. This accumulation also describes the amout of gas we may use from this last
-station to the start (stations are in a circle). If tank + pre > 0, we can go all the way
-back to start. Return start. Else, return -1, as there will be no valid start point.
+3. When we reach the last station, we get the last *start* point, that is a valid
+start considering [start, end]. But we need to check, with current *tank*, if it is
+able to go around all previous stations. If tank + pre > 0, we can go all the way
+back to start. Return start. Else, return -1.
+                0  1  2     ...    start   ...    end
+                __ __ __ _________ ____  ________ __
+                [      pre       ] [      tank     ]
 
 */
 
