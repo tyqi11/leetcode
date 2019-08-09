@@ -147,6 +147,14 @@ Implementation: HashMap, Hashtable, LinkedHashMap, TreeMap
 * Difference between a **Set** view and a **Collection** view?
   * **Set** is a collection that contains ==no duplicate== elements.
 
+* `map.getOrDefault(Object key, V defaultValue)` vs. `map.putIfAbsent(K key, V value)`
+
+  (Used in LeetCode 815. Bus Routes)
+
+  [Which is better?](<https://stackoverflow.com/questions/29539336/which-one-is-better-getordefault-or-putifabsent-of-hashmap-in-java>)
+
+  Simple answer: the first is a getter and the second is a setter.
+
 ### HashMap vs. Hashtable
 
 ### TreeMap
