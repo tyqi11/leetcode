@@ -21,43 +21,39 @@ or there are even number of nodes, like 1 -> 2 -> 3 -> 4, after reversing:
 
 class Solution {
     public void reorderList(ListNode head) {
-        if (head == null || head.next == null || head.next.next == null) {
+        if (head == null || head.next == null) {
             return;
         }
         ListNode slow = head;
         ListNode fast = head;
-        // 1. find the start of second half
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-        // 2. reverse the second, get the secondHead
-        ListNode secondHead = reverse(slow);
-        slow = head;
-        fast = secondHead;
-        // 3. connect two lists
-        while (slow != fast && slow.next != fast) {
-            ListNode sNext = slow.next;
-            ListNode fNext = fast.next;
-            slow.next = fast;
-            fast.next = sNext;
-            slow = sNext;
-            fast = fNext;
-        }      
+        ListNode h1 = head;
+        ListNode h2 = reverse(slow);
+        
+        while (h1 != h2 && h1.next != h2) {
+            ListNode n1 = h1.next;
+            h1.next = h2;
+            h1 = n1;
+            ListNode n2 = h2.next;
+            h2.next = h1;
+            h2 = n2;
+        }        
     }
     
     private ListNode reverse(ListNode head) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode pre = dummy;
+        ListNode pre = new ListNode(0);
+        pre.next = head;
         ListNode cur = head;
         while (cur.next != null) {
             ListNode next = cur.next;
             cur.next = next.next;
-            next.next = dummy.next;
-            dummy.next = next;
+            next.next = pre.next;
+            pre.next = next;
         }
-        return dummy.next;
+        return pre.next;
     }
 }
 
