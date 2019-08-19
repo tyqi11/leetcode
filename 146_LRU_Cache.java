@@ -14,18 +14,20 @@ credit to https://www.youtube.com/watch?v=S6IfqDXWa10 for a great explanation an
 */
 
 class LRUCache {
-    
-    private class DNode {
-        int key, val;
+
+    class DNode {
+        int key, val;  // key in node is used for searching in map and deleting
         DNode prev, next;
     }
     
-    private Map<Integer, DNode> map = new HashMap<>();
+    private Map<Integer, DNode> map;
     private DNode head, tail;
-    private int count; // number of nodes in the map
-    private int cap; // number of initial capacity set
-
+    private int cnt;
+    private int cap;
+        
     public LRUCache(int capacity) {
+        map = new HashMap<>();
+        
         head = new DNode();
         head.prev = null;
         
@@ -34,65 +36,69 @@ class LRUCache {
         
         head.next = tail;
         tail.prev = head;
-            
-        count = 0;
-        cap = capacity;        
+        
+        cnt = 0;
+        cap = capacity;
     }
     
     public int get(int key) {
-        DNode node = map.get(key);
-        if (node == null) {
+        DNode n = map.get(key);
+        if (n == null) {
             return -1;
         }
-        moveToHead(node);
-        return node.val;
+        moveToHead(n);
+        return n.val;
     }
     
     public void put(int key, int value) {
-        DNode node = map.get(key);
-        if (node != null) { // map contains key
-            node.val = value;
-            moveToHead(node);
-        } else { // map does not contains key
-            DNode newNode = new DNode();
-            newNode.key = key;
-            newNode.val = value;
-            map.put(key, newNode);
-            addNode(newNode);
-            count++;
-            if (count > cap) {
-                removeLRU();
-                count--;
-            }
+        DNode n = map.get(key);
+        if (n != null) {
+            n.val = value;
+            moveToHead(n);
+        } else {
+            n = new DNode();
+            n.key = key;
+            n.val = value;
+            map.put(key, n);
+            addAtHead(n);
+            cnt++;
+        }     
+        
+        while (cnt > cap) {
+            removeAtTail();
+            cnt--;
         }
     }
     
-    /** helper functions*/
     private void moveToHead(DNode node) {
-        removeNode(node);
-        addNode(node);
+        remove(node);
+        addAtHead(node);
     }
     
-    private void addNode(DNode node) {
-        node.prev = head;
+    private void addAtHead(DNode node) {
         node.next = head.next;
+        node.prev = head;
+        
+        head.next.prev = node;
         head.next = node;
-        node.next.prev = node;
     }
     
-    private void removeLRU() {
-        DNode removed = tail.prev;
-        // remove the last before tail
+    private void removeAtTail() {
+        map.remove(tail.prev.key);
         tail.prev = tail.prev.prev;
         tail.prev.next = tail;
-        map.remove(removed.key);
     }
     
-    private void removeNode(DNode node) {
-        DNode prevNode = node.prev;
-        DNode nextNode = node.next;
-        
-        prevNode.next = nextNode;
-        nextNode.prev = prevNode;
+    private void remove(DNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
+    
 }
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
