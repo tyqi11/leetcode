@@ -85,7 +85,7 @@ When a deque is used as a FIFO (First-In-First-Out) queue:
   | `list.isEmpty()`                                   | return *true* if contains no elements                        |
   | `list.toArray()`                                   | return an array containing all the elements in the list from first to last |
 
-### ArrayList vs. LinkedList
+### ArrayList vs. LinkedList :star:
 
 | Interfaces                                            | ArrayList                          | LinkedList                         |
 | ----------------------------------------------------- | ---------------------------------- | ---------------------------------- |
@@ -119,15 +119,13 @@ This implementation provides guaranteed log(n) time cost for the basic operation
 
 **Note that this implementation is not synchronized.**
 
-| Method                            | Description                                                  |
-| --------------------------------- | ------------------------------------------------------------ |
-| `s.ceiling(E e)` / `s.floor(E e)` | return the least element >= / <= *e*, return null if no such element |
-| `s.first()` / `s.last()`          | return the first(lowest)/last(highest) element in this set   |
-| `s.higher()` / `s.lower()`        | return the least element > / < *e*, return null if no such element |
-| `s.pollFirst()` / `s.pollLast()`  | retrieve and remove the first(lowest)/ last(highest) element in this set |
-|                                   |                                                              |
-|                                   |                                                              |
-|                                   |                                                              |
+| Method                            | Description                                                  | IMP  |
+| --------------------------------- | ------------------------------------------------------------ | ---- |
+| `s.ceiling(E e)` / `s.floor(E e)` | return the least element >= / <= *e*, return null if no such element |      |
+| `s.first()` / `s.last()`          | return the first(lowest)/last(highest) element in this set   |      |
+| `s.higher()` / `s.lower()`        | return the least element > / < *e*, return null if no such element |      |
+| `s.pollFirst()` / `s.pollLast()`  | retrieve and remove the first(lowest)/ last(highest) element in this set |      |
+|                                   |                                                              |      |
 
 
 
@@ -137,6 +135,7 @@ Implementation: HashMap, Hashtable, LinkedHashMap, TreeMap
 
 | Method                          | Description                                          |
 | ------------------------------- | ---------------------------------------------------- |
+| `m.get(Object key)` |return *null* if no mapping for *key*|
 | `m.containsKey(Object key)`     | return *true* if contains a mapping for *key*        |
 | `m.containsValue(Object value)` | return *true* if maps to one or more keys to *value* |
 | `m.remove(Object key)`          | return *value* if the key is present                 |
@@ -145,6 +144,7 @@ Implementation: HashMap, Hashtable, LinkedHashMap, TreeMap
 | `m.values()`                    | return a **Collection** view of the values           |
 
 * Difference between a **Set** view and a **Collection** view?
+
   * **Set** is a collection that contains ==no duplicate== elements.
 
 * `map.getOrDefault(Object key, V defaultValue)` vs. `map.putIfAbsent(K key, V value)`
@@ -159,13 +159,14 @@ Implementation: HashMap, Hashtable, LinkedHashMap, TreeMap
 
 ### TreeMap
 
-| Method                                                       | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `m.ceilingKey(K key)` (`m.ceilingEntry(K key)`)              | return the least **key** greater than or equal to the given key, or *null* if no such key |
-| `m.firstKey()` (`m.firstEntry()`)                            | return he first/lowest key currently in this map             |
-| `m.floorKey(K key)` (`m.floorEntry(K key)`)                  | return the greatest **key** less than or equal to the given key, or *null* if no such key |
-| `m.higherKey(K key)` / `m.lowerKey(K key)`                   | return **the least key strictly greater than**/**the greatest key strictly less than** then given key |
-| `m.headMap(K toKey, boolean inclusive)` / `m.tailMap(K fromKey)` | return a view of the portion of this map whose keys are strictly less than (or equal to, if *inclusive* is true, default false) *toKey*. (similar logic to tailMap) |
+| Method                                                       | Description                                                  | IMP  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| `m.ceilingKey(K key)` (`m.ceilingEntry(K key)`)              | return the least **key** greater than or equal to the given key, or *null* if no such key |      |
+| `m.firstKey()` (`m.firstEntry()`)                            | return he first/lowest key currently in this map             |      |
+| `m.floorKey(K key)` (`m.floorEntry(K key)`)                  | return the greatest **key** less than or equal to the given key, or *null* if no such key |      |
+| `m.higherKey(K key)` / `m.lowerKey(K key)`                   | return **the least key strictly greater than**/**the greatest key strictly less than** then given key |      |
+| `m.headMap(K toKey, boolean inclusive)` / `m.tailMap(K fromKey)` | return a view of the portion of this map whose keys are strictly less than (or equal to, if *inclusive* is true, default false) *toKey*. (similar logic to tailMap) |      |
+|                                                              |                                                              |      |
 
 ## Tree
 
@@ -187,18 +188,22 @@ Related problems:
 
 `String str = "hello";`
 
-| Method                                                       | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `str.charAt(int index)`                                      | return the *char* at *index*                                 |
-| `str1.compareTo(str2)` / `str1.compareToIgnoreCase(str2)`    | compare two strings lexicographically (negative if str1 precedes, positive if str1 follows) |
-| `str.toLowerCase()` / `str.toUpperCase()`                    |                                                              |
-| `str.toCharArray()`                                          | convert the string to a character array                      |
-| `str1.concat(str2)`                                          | return "str1" + "str2", time complexity O(n), try to use StringBuffer instead |
-| `str.substring(int start, int end)`                          |                                                              |
-| `str.split(String regex)`                                    | return `String[]` , split the string around matches of *regex* (regular expression) |
-| `String.valueOf(E e)` (E can be boolean, char[], int, Object...  ) | return the string representation of the *E* argument         |
+| Method                                                       | Description                                                  | IMP    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| `str.charAt(int index)`                                      | return the *char* at *index*                                 |        |
+| `str1.compareTo(str2)` / `str1.compareToIgnoreCase(str2)`    | compare two strings lexicographically (negative if str1 precedes, positive if str1 follows) |        |
+| `str.toLowerCase()` / `str.toUpperCase()`                    |                                                              |        |
+| `str.toCharArray()`                                          | convert the string to a character array                      |        |
+| `str1.concat(str2)`                                          | return "str1" + "str2", time complexity O(n), try to use StringBuilder instead |        |
+| `str.substring(int start, int end)`                          | [start, end)                                                 |        |
+| `str.split(String regex)`                                    | return `String[]` , split the string around matches of *regex* (regular expression) | :star: |
+| `String.valueOf(E e)` (E can be boolean, char[], int, Object...  ) | return the string representation of the *E* argument         | :star: |
+
+
 
 ### StringBuilder
+
+[Java7 Doc](https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html)
 
 A **mutable** sequence of characters, with no guarantee of synchronization. This class is designed for use as a drop-in replacement for StringBuffer in places where the string buffer was being used by **a single thread** (as is generally the case). Where possible, it is **recommended** that this class be used **in preference to StringBuffer** as it will be faster under most implementations.
 
@@ -210,14 +215,17 @@ Every string builder has a capacity. As long as the length of the character sequ
   * `StringBuilder(int capacity)`
   * `StringBuilder(String str)`
 
-| Method                                     | Description                                                 |
-| ------------------------------------------ | ----------------------------------------------------------- |
-| `sb.append(E e)` (E: any type)             | append the string representation of *e* to the sequence     |
-| `sb.charAt(int index)`                     | return the *char* value at *index*                          |
-| `sb.insert(int offset, E e)` (E: any type) | insert the string representation of *e* at *index*          |
-| `sb.length()`                              | return the length (character count)                         |
-| `sb.substring(int start, int end)`         | return a new String from *start* to *end*                   |
-| `sb.toString()`                            | return a string representation of the data in this sequence |
+| Method                                     | Description                                             | IMP |
+| ------------------------------------------ | ------------------------------------------------------- | ---- |
+| `sb.append(E e)` (E: any type)             | append the string representation of *e* to the sequence | :star: |
+| `sb.delete(int start, int end)`          | remove the characters in a substring |      |
+| `sb.replace(int start, int end, String str)` |                                                         |      |
+| `sb.insert(int offset, E e)` (E: any type) | insert the string representation of *e* at *index*      |      |
+| `sb.charAt(int index)`                     | return the *char* value at *index*                      |      |
+| `sb.deleteCharAt(int index)`               | remove the *char* at the specified position |      |
+| `sb.setCharAt(int index, char ch)`         | the char at the specified index is set to *ch* |      |
+| `sb.substring(int start, int end)`         | return a new String from *start* to *end*               |      |
+|`sb.reverse()`|return StringBuilder||
 
 ==NO ITERABLE! NO `for (char c : sb)`!==
 
@@ -229,14 +237,14 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 
 ## Arrays
 
-| Method                                                       | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `Arrays.sort(int[] a)`                                       | sort into ascending order, using Dual-Pivot Quicksort, with O(nlogn) performance |
-| `Arrays.asList(E a)` (or `Arrays.asList("Larry", "Moe", "Curly"))` | return a fixed-size list backed by *a*, the returned list implements RandomAccess. |
-| `Arrays.binarySearch(int[] a, int key)`                      | search *key* in *a* using binary search algorithm            |
-| `Arrays.copyOf(int[] a, int len)`                            | copy, truncating or padding with zeros (if necessary) so the copy has the length *len* |
-| `Arrays.copyOfLength(int[] a, int from, int to)`             | copy specified range of the *a* into a new array             |
-| `Arrays.toString(int[] a)`                                   | return a string representation of contents in *a*: `"[1, 2, 3]"` |
+| Method                                                       | Description                                                  | IMP  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| `Arrays.sort(int[] a)`                                       | sort into ascending order, using Dual-Pivot Quicksort, with O(nlogn) performance |      |
+| `Arrays.asList(E a)` (or `Arrays.asList("Larry", "Moe", "Curly"))` | return a fixed-size list backed by *a*, the returned list implements RandomAccess. |      |
+| `Arrays.binarySearch(int[] a, int key)`                      | search *key* in *a* using binary search algorithm            |      |
+| `Arrays.copyOf(int[] a, int len)`                            | copy, truncating or padding with zeros (if necessary) so the copy has the length *len* |      |
+| `Arrays.copyOfLength(int[] a, int from, int to)`             | copy specified range of the *a* into a new array             |      |
+| `Arrays.toString(int[] a)`                                   | return a string representation of contents in *a*: `"[1, 2, 3]"` |      |
 
 
 

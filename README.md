@@ -1,5 +1,3 @@
-[TOC]
-
 # LeetCodeExplanation
 
 This repository shows how I think of the solutions to problems on LeetCode and how I want to explain them to the others(including interviewers). 
@@ -134,6 +132,18 @@ Summary and explanation by [@wxd_sjtu](<https://leetcode.com/problems/sum-of-sub
 [132 Pattern](https://leetcode.com/problems/132-pattern/description/)(challenge, instead of focusing on the elements in the stack, this problem focuses on the elements poped from the monotone stack)
 [sliding window maximum](https://leetcode.com/problems/sliding-window-maximum/description/)(challenge, monotone **queue**)
 [Max Chunks To Make Sorted II](https://leetcode.com/problems/Max-Chunks-To-Make-Sorted-II/description/)
+
+### Design problems
+
+| No.  | Title          |
+| ---- | -------------- |
+| 146  | LRU Cache      |
+| 706  | Design HashMap |
+|      |                |
+|      |                |
+|      |                |
+|      |                |
+
 
 
 ## Tiny-Tips
