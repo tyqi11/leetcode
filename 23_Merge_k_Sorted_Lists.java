@@ -71,20 +71,38 @@ class Solution {
         return merge(left, right); 
     }
     
-    private ListNode merge(ListNode l1, ListNode l2) {
-        if (l1 == null) {
-            return l2;
-        } else if (l2 == null) {
-            return l1;
+    // easier to understand for merging
+    private ListNode merge(ListNode first, ListNode second) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
+        while (first != null || second != null) {
+            if (second == null || (first != null && first.val < second.val)) {
+                cur.next = first;
+                first = first.next;
+            } else {
+                cur.next = second;
+                second = second.next;
+            }
+            cur = cur.next;
         }
-        if (l1.val < l2.val) {
-            l1.next = merge(l1.next, l2);
-            return l1;
-        } else {
-            l2.next = merge(l1, l2.next);
-            return l2;
-        }
+        return dummy.next;
     }
+
+    //// recursive way to do merge()
+    // private ListNode merge(ListNode l1, ListNode l2) {
+    //     if (l1 == null) {
+    //         return l2;
+    //     } else if (l2 == null) {
+    //         return l1;
+    //     }
+    //     if (l1.val < l2.val) {
+    //         l1.next = merge(l1.next, l2);
+    //         return l1;
+    //     } else {
+    //         l2.next = merge(l1, l2.next);
+    //         return l2;
+    //     }
+    // }
 }
 
 /*
