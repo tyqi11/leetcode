@@ -12,26 +12,19 @@ to store all the entered rooms, instead of a boolean to track if one room is vis
 // Solution 1: DFS
 class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-        if (rooms == null || rooms.size() == 0) {
-            return true;
-        }
-        Set<Integer> entered = new HashSet<>();
-        entered.add(0);
-        dfs(rooms, entered, 0);
-        return entered.size() == rooms.size();
+        Set<Integer> went = new HashSet<>();
+        visit(went, rooms, 0);
+        return went.size() == rooms.size();
     }
     
-    private void dfs(List<List<Integer>> rooms, Set<Integer> entered, int cur) {
-        List<Integer> keys = rooms.get(cur);
-        for (int room : keys) {
-            if (entered.add(room)) {
-                dfs(rooms, entered, room);
+    private void visit(Set<Integer> went, List<List<Integer>> rooms, int cur) {
+        if (went.add(cur)) {
+            for (int key : rooms.get(cur)) {
+                visit(went, rooms, key);
             }
         }
     }
 }
-
-
 
 /*
 Time complexity: O(n)

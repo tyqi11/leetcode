@@ -128,3 +128,53 @@ class Solution {
         dfs(root.right, x + 1, y - 1);
     }
 }
+
+/****************************************************************/
+// Solution 3: slightly changes in the logic of adding into the list
+class Solution {
+    Queue<int[]> q;  
+    
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        q = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] a, int[] b) {
+                if (a[0] != b[0]) {
+                    return Integer.compare(a[0], b[0]);
+                } else if (a[1] != b[1]) {
+                    return Integer.compare(b[1], a[1]);
+                } else {
+                    return Integer.compare(a[2], b[2]);
+                }
+            }
+        }); // [x, y, val] 
+        
+        dfs(root, 0, 0);
+        
+        int preX = q.peek()[0]; // first x
+        List<Integer> curList = new ArrayList<>();
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            if (cur[0] != preX) {
+                list.add(curList);
+                curList = new ArrayList<>();
+            }
+            curList.add(cur[2]);
+            preX = cur[0];
+        }
+        list.add(curList);
+        return list;        
+    }
+    
+    private void dfs(TreeNode root, int x, int y) {
+        if (root == null) {
+            return;
+        }
+        q.offer(new int[]{x, y, root.val});
+        dfs(root.left, x - 1, y - 1);
+        dfs(root.right, x + 1, y - 1);
+    }
+}
