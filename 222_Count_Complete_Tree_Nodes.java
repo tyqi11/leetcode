@@ -1,7 +1,7 @@
 /*
 
 1. The easiest way must be traversal all the nodes and count. But this is a general
-way for any trees, and for complete binary tree, we can take advantage of its defition.
+way for any trees, and for complete binary tree, we can take advantage of its definition.
 
 2. We count the height of the leftmost path and rightmost path. If they are the same,
 this is a complete binary tree whose last level is completely filled. Total nodes: 2^level - 1.
@@ -35,7 +35,7 @@ class Solution {
             rightHeight++;
         } // leftHeight - 1 or leftHeight 
         if (leftHeight == rightHeight) {
-            return (1 << leftHeight) - 1; // 2^(leftHeight) - 1
+            return (1 << leftHeight) - 1; // 2^(leftHeight) - 1, move 1!!
         } else { // leftHeight = 1 + rightHeight
             return 1 + countNodes(root.left) + countNodes(root.right);
         }    // root +   left subtree nodes  + right subtree nodes  
