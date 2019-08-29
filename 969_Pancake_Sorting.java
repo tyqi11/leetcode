@@ -23,19 +23,20 @@ class Solution {
     public List<Integer> pancakeSort(int[] A) {
         List<Integer> res = new ArrayList<>();
         int target = A.length;
-        for (int i = 0; i < A.length; i++) {
+        whille (target > 1) {
             int index = find(A, target);
             if (index != target - 1) {
                 flip(A, index);
+                res.add(index + 1);
                 flip(A, target - 1);
-            }
-            res.add(index + 1);
-            res.add(target);
+                res.add(target);
+            }            
             target--;
         } 
         return res;
     }
     
+    // indices are always changing, so we cannot use hashmap
     private int find(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == target) {
@@ -46,7 +47,7 @@ class Solution {
     }
     
     private void flip(int[] nums, int end) {
-        int i = 0;
+        int i = 0;  // always start from 0
         int j = end;
         while (i < j) {
             int temp = nums[i];
