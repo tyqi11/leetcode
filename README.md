@@ -160,11 +160,11 @@ Problems to learn Binary Search:
 
 ### Bit manipulation
 
+(https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=73742&extra=page%3D1)
+
 ### Graph and Tree
 
 [Tree in graph theory](<https://leetcode.com/problems/minimum-height-trees/discuss/76055/Share-some-thoughts>) by @dietpepsi
-
-
 
 ## Templates
 
@@ -172,14 +172,13 @@ Problems to learn Binary Search:
 
 * [Topological Sort]([template][template]Topological-Sort)
 
-## Return type conversion
+## Regex
 
-| From - To                  | Implementation                                               |
-| -------------------------- | ------------------------------------------------------------ |
-| `List<int[]>` to `int[][]` | `list.toArray(new int[list.size()][2])`; <br />2 is number of elements in each `int[]` |
-| `char[]` to `String`       | `new String(ch)`, `ch` is the char array                     |
+`str.split("\\.")`
 
+a dot ('.') in regex means "any character". If you mean a dot, you need a backslash
 
+to escape it. And it takes double backslash to create a single backslash in regex.
 
 
 

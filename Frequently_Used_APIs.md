@@ -193,10 +193,10 @@ Related problems:
 | `str.charAt(int index)`                                      | return the *char* at *index*                                 |        |
 | `str1.compareTo(str2)` / `str1.compareToIgnoreCase(str2)`    | compare two strings lexicographically (negative if str1 precedes, positive if str1 follows) |        |
 | `str.toLowerCase()` / `str.toUpperCase()`                    |                                                              |        |
-| `str.toCharArray()`                                          | convert the string to a character array                      |        |
+| `str.replace(char old, char new)`                            | e.g. `str.replace(".", "");` it is "", not ''.               |        |
 | `str1.concat(str2)`                                          | return "str1" + "str2", time complexity O(n), try to use StringBuilder instead |        |
 | `str.substring(int start, int end)`                          | [start, end)                                                 |        |
-| `str.split(String regex)`                                    | return `String[]` , split the string around matches of *regex* (regular expression) | :star: |
+| `str.split(String regex)`                                    | return `String[]` , split the string around matches of *regex* (regular expression)<br />`str.split("\\.")` | :star: |
 | `String.valueOf(E e)` (E can be boolean, char[], int, Object...  ) | return the string representation of the *E* argument         | :star: |
 
 
@@ -246,7 +246,13 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 | `Arrays.copyOfLength(int[] a, int from, int to)`             | copy specified range of the *a* into a new array             |      |
 | `Arrays.toString(int[] a)`                                   | return a string representation of contents in *a*: `"[1, 2, 3]"` |      |
 
+* `Arrays.asList()`
 
+  Not recommend to use when the array is of primitive data type .
+
+  The array and the list is connected by `asList()`, one is updated when the other is updated.
+
+  The List returned from `asList()` has no `add` or `remove` method, because the List is referencing to the array, so the list implements RandomAccess.
 
 ## Character
 
@@ -259,37 +265,11 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 |                                |             |
 |                                |             |
 
-# Algorithms
+## Return type conversion
 
-## Bit manipulation
-
-(https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=73742&extra=page%3D1)
-x ^ 0s = x      x & 0s = 0   x | 0s = x
-x ^ 1s = ~x   x & 1s = x    x | 1s = 1s
-x ^ x  = 0      x & x = x     x | x  = x
-boolean getBit(int i, int num){
-        return ( (num & (1 << i)) != 0 );
-}
-int setBit(int i, int num){
-        return num | (1 << i);
-}
-int clearBit(int num, int i) {
-        int mask = ~(1 << i);
-        return num & mask;
-}
-int clearBitMSBthroughI(int num, int i){
-        int mask = (1<< i) -1;
-        return num & mask;
-}
-int clearBitsIThrough0(int i, int num) {
-        int mask = ~( (1 << (i+1) )  -1 );
-        return num & mask;
-}
-int updateBit(int i, int num, int v){
-        int mask = ~(1 << i);
-        return (num & mask) | (v << i);
-}
-
-
+| From - To                  | Implementation                                               |
+| -------------------------- | ------------------------------------------------------------ |
+| `List<int[]>` to `int[][]` | `list.toArray(new int[list.size()][2])`; <br />2 is number of elements in each `int[]` |
+| `char[]` to `String`       | `new String(ch)`, `ch` is the char array                     |
 
 # end
