@@ -56,6 +56,9 @@ class Solution {
         TreeSet<Integer> right = getSet(nums);
         
         for(int i = 0; i < nums.length; i++) {
+        	// left.size() == right.size() or left.size() == right.size() + 1
+        	// when equal, add to left
+        	// when odd, res = nums[left.last()]
             if(left.size() <= right.size()) {
                 right.add(i);
                 int m = right.first();
@@ -68,10 +71,27 @@ class Solution {
                 right.add(m);
             }
 
+            // another way
+            // right.size() == left.size() or right.size() == left.size() + 1
+        	// when equal, add to right
+        	// when odd, res = nums[right.first()]
+        	// also use pollLast()/pollFirst() to be more concise
+        	/*
+			if(left.size() < right.size()) {
+                right.add(i);
+                Integer m = right.pollFirst();
+                left.add(m);
+            } else {
+                left.add(i);
+                Integer m = left.pollLast();
+                right.add(m);
+            }
+        	*/
 
             if(left.size() + right.size() == k) {
                 if(left.size() == right.size()) {
                     result[idx] = 0.5 * nums[left.last()] + 0.5 * nums[right.first()];
+                    			// avoid 0.5 * (nums[] + nums[]) to avoid overflow
                 } else {
                     result[idx] = nums[left.last()];
                 }                    
@@ -97,7 +117,7 @@ class Solution {
 }
 
 /*
-Time complexity: O(nlogk), O(lognk) for add() and remove() in a TreeSet
+Time complexity: O(nlogk), O(logk) for add() and remove() in a TreeSet
 Space complexity: O(k)
 */
 
