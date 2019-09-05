@@ -29,9 +29,9 @@ The elements of the priority queue are ordered according to their natural orderi
 
 **Note that this implementation is not synchronized.** 
 
-This implementation provides $$O(logn)$$ time for the enqueuing and dequeuing methods (`offer`, `poll`, `remove()` and `add`); linear time for the `remove(Object)` and `contains(Object)`methods; and constant time for the retrieval methods (`peek`, `element`, and `size`).
+This implementation provides $$O(logn)$$ time for the enqueuing and dequeuing methods (`offer`, `poll`, `add` and `remove()`); linear time($$O(n)$$) for the `remove(Object)` and `contains(Object)` methods; and constant time($$O(1)$$) for the retrieval methods (`peek`, `element`, and `size`).
 
-==(Note: remove Object is O(n))==
+==Note: remove() = poll() is O(logn), but  remove Object is O(n)==
 
 ### Stack (Deque)
 
@@ -115,7 +115,7 @@ A collection that contains no duplicate elements, and at most one null element. 
 
 A `NavigableSet` implementation based on a `TreeMap`. 
 
-This implementation provides guaranteed log(n) time cost for the basic operations (`add`, `remove` and `contains`).
+This implementation provides ==guaranteed O(logn) time cost== for the basic operations (`add`, `remove` and `contains`).
 
 **Note that this implementation is not synchronized.**
 
@@ -253,6 +253,10 @@ Whenever an operation occurs involving a source sequence (such as appending or i
   The array and the list is connected by `asList()`, one is updated when the other is updated.
 
   The List returned from `asList()` has no `add` or `remove` method, because the List is referencing to the array, so the list implements RandomAccess.
+
+* `Arrays.binarySearch(int[] a, int key)`
+
+  return the index of the `key` if `key` is in the array; otherwise, return *-(insertion point) - 1*. 
 
 ## Character
 
