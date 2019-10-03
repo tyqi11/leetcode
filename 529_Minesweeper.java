@@ -28,8 +28,6 @@ class Solution {
     int[][] neighbors = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
     
     public char[][] updateBoard(char[][] board, int[] click) {
-        int m = board.length;
-        int n = board[0].length;
         int x = click[0];
         int y = click[1];
         // 1.1 'M' -> 'X'
@@ -68,8 +66,7 @@ class Solution {
         for (int[] neighbor : neighbors) {
             int i = x + neighbor[0];
             int j = y + neighbor[1];
-            if (i >= 0 && i < m && j >= 0 && j < n 
-                &&(board[i][j] == 'M' || board[i][j] == 'X')) {
+            if (i >= 0 && i < m && j >= 0 && j < n && board[i][j] == 'M') {
                 count++;
             }
         }
