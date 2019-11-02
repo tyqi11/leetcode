@@ -57,3 +57,15 @@ class Solution {
 Time complexity: O()
 Space complexity: O()
 */
+
+/*************************************/
+class Solution {
+	public int subarraysWithKDistinct(int[] A, int K) {
+		int res = 0;
+		int prefix = 0;
+		int[] m = new int[A.length + 1];
+		for (int i = 0, j = 0, cnt = 0; i < A.length; i++) {
+			if (A[i])
+		}
+	}
+}
