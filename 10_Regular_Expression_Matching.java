@@ -76,7 +76,7 @@ class Solution {
                     } else { // ppre == '.' || ppre == sch, s: ###a, p: #.* ||  #a*
                         dp[i][j] = dp[i][j - 2] || dp[i- 1][j - 2] || dp[i - 1][j];
                     }
-                } // else, cannot decide
+                } // else： sch != pch && pch != '.' && pch != '*' -> default false
             }
         }
         
