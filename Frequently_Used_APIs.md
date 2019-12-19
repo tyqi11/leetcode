@@ -168,6 +168,8 @@ Implementation: HashMap, Hashtable, LinkedHashMap, TreeMap
 | `m.headMap(K toKey, boolean inclusive)` / `m.tailMap(K fromKey)` | return a view of the portion of this map whose keys are strictly less than (or equal to, if *inclusive* is true, default false) *toKey*. (similar logic to tailMap) |      |
 |                                                              |                                                              |      |
 
+This implementation provides guaranteed log(n) time cost for the `containsKey`, `get`, `put` and `remove` operations. 
+
 ## Tree
 
 ### Trie
@@ -185,13 +187,12 @@ Related problems:
 [212. Word Search II](<https://leetcode.com/problems/add-and-search-word-data-structure-design/>)
 
 ## String
-
 `String str = "hello";`
 
 | Method                                                       | Description                                                  | IMP    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
 | `str.charAt(int index)`                                      | return the *char* at *index*                                 |        |
-| `str1.compareTo(str2)` / `str1.compareToIgnoreCase(str2)`    | compare two strings lexicographically (negative if str1 precedes, positive if str1 follows) |        |
+| `str1.compareTo(str2)`                                       | compare two strings lexicographically (negative if str1 precedes, positive if str1 follows) |        |
 | `str.toLowerCase()` / `str.toUpperCase()`                    |                                                              |        |
 | `str.replace(char old, char new)`                            | e.g. `str.replace(".", "");` it is "", not ''.               |        |
 | `str1.concat(str2)`                                          | return "str1" + "str2", time complexity O(n), try to use StringBuilder instead |        |
@@ -225,7 +226,7 @@ Every string builder has a capacity. As long as the length of the character sequ
 | `sb.deleteCharAt(int index)`               | remove the *char* at the specified position |      |
 | `sb.setCharAt(int index, char ch)`         | the char at the specified index is set to *ch* |      |
 | `sb.substring(int start, int end)`         | return a new String from *start* to *end*               |      |
-|`sb.reverse()`|return StringBuilder||
+|`sb.reverse()`|return StringBuilder|:star:|
 
 ==NO ITERABLE! NO `for (char c : sb)`!==
 
@@ -266,8 +267,6 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 | ------------------------------ | ----------- |
 | `Character.isLetterOrDigit(c)` |             |
 | `Character.getNumericValue(c)` |             |
-|                                |             |
-|                                |             |
 
 ## Return type conversion
 
@@ -275,5 +274,12 @@ Whenever an operation occurs involving a source sequence (such as appending or i
 | -------------------------- | ------------------------------------------------------------ |
 | `List<int[]>` to `int[][]` | `list.toArray(new int[list.size()][2])`; <br />2 is number of elements in each `int[]` |
 | `char[]` to `String`       | `new String(ch)`, `ch` is the char array                     |
+| `char` to `int`            | `int a = c - '0';` or `int a = Character.getNumericValue(c);` |
+| `int` to `char`            | `char c = (char)(a);`                                        |
+| `String` to `int`          | `int a = Integer.parseInt(s);`  and `double b = Double.parseDouble(s)` |
+| `int` to `String`          | `String s = String.valueOf(a);`                              |
+|                            |                                                              |
 
-# end
+
+
+by Tina

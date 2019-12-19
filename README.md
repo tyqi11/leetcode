@@ -59,7 +59,7 @@ Series of problems with similar way of thinking and implementing.
 | 395  | Longest Substring with At Least K Repeating Characters |
 | 159  | Longest Substring with At Most Two Distinct Characters |
 
-Solution reference​:​ [@ndec09](<https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems>)
+Solution reference: [@ndec09](<https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems>)
 
 * Subarray
 
@@ -148,15 +148,47 @@ Summary and explanation by [@wxd_sjtu](<https://leetcode.com/problems/sum-of-sub
 
 ## Tiny-Tips
 
-### Binary Search terminal condition
+### Binary Search 
 
-1. If the target you want surely exists and you want the index at the end, use `while (left < right)`. There will be only one element left and it is the target.
-2. If you may return the value during the search, use `while (left <= right)`
+Thanks @Poojan for teaching me this.
 
-Problems to learn Binary Search: 
+* `T T T T T F F F `
 
-1. 35
-2. 33
+```java
+while (true) {
+    if (left > right) {
+        ans = right;
+        break;
+    }
+    int mid = left + (right - left) / 2;
+    if (checker()) {
+        left = mid + 1;
+    } else {
+        right = mid - 1;
+    }
+}
+return ans;
+```
+
+* `F F F F F T T T`
+
+```java
+while (true) {
+	if (left > right) {
+        ans = left;
+        break;
+    }
+    int mid = left + (right - left) / 2;
+    if (checker()) {
+        right = mid - 1;
+    } else {
+        left = mid + 1;
+    }
+}
+return ans;
+```
+
+
 
 ### Bit manipulation
 
