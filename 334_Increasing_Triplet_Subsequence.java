@@ -14,7 +14,7 @@ round5: first =-1, second = 1;
 // second is updated, now, our requirement for third decrease to > 1. The last
 3 is valid. If the last is 2, it still works. This is the best part.
 
-2. This algorithm can only reply true or false, but cannot reply the exact
+2. This algorithm can only return true or false, but cannot return the exact
 subsequence.
 
 */
@@ -27,9 +27,9 @@ class Solution {
         int first = Integer.MAX_VALUE;
         int second = Integer.MAX_VALUE;
         for (int n : nums) {
-            if (n <= first) {
+            if (n <= first) {      // must be <=, not <
                 first = n;
-            } else if (n <= second) {
+            } else if (n <= second) {  // must be <=, not <
                 second = n;
             } else {
                 return true;
@@ -38,6 +38,11 @@ class Solution {
         return false;
     }
 }
+
+/*
+if < instead of <=, when 1, 1, 1, 1, 1, f = MAX, s = MAX
+first 1 changes f = 1, second 1 changes s = 1, third 1 return true
+*/
 
 /*
 Time complexity: O(n)

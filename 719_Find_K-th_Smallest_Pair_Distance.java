@@ -1,5 +1,5 @@
 /*
-# Two Pointers
+# Two Pointers (similar to 378 solving with binary search)
 
 1. The pair distances fall into a range of [0, max - min]. So we set a distance *mid*, 
 and search to check how many pairs' distance <= mid. 
@@ -21,30 +21,29 @@ So, 1.2 and 1.3 are combinded as if count >= k, right = mid.
 class Solution {
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
-        
-        // distance range: [0, max - min]
         int n = nums.length;
-        int left = 0;
-        int right = nums[n - 1] - nums[0];  // max - min
         
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            int count = 0;  // no. of pairs with distance <= m
-            for (int i = 0, j = 0; i < n; i++) {
-                while (j < n && nums[j] <= nums[i] + mid) {
+        int lo = 0;
+        int hi = nums[n - 1] - nums[0];
+        
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            int count = 0;
+            for (int i = 0, j = i + 1; i < n; i++) {
+                while (j < n && nums[j] - nums[i] <= mid) {
                     j++;
-                } // exit when nums[j] - nums[i] > mid
+                }
                 count += j - i - 1;
             }
             
             if (count < k) {
-                left = mid + 1;
-            } else { 			// mid may not be a valid distance
-                right = mid; 	// when count == k, cannot return
+                lo = mid + 1;
+            } else {
+                hi = mid;
             }
         }
         
-        return left;
+        return lo;
     }
 }
 
