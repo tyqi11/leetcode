@@ -1,4 +1,5 @@
 /*
+update: a better solution using two pointers is added below
 
 1. To get a substring, we need to know the start index and end index. To get the longest,
 we need an extra max variable. When iterating over all the characters in the string, if
@@ -37,3 +38,27 @@ class Solution {
 Time complexity: O(n)
 Space complexity: O(1)
 */
+
+/*************************************************/
+// Two pointer
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        
+        int[] count = new int[128];
+        int maxLen = 1;
+        int i = 0, j = 0;
+        while (j < s.length()) {
+            count[s.charAt(j)]++;
+            while (count[s.charAt(j)] > 1) {
+                count[s.charAt(i++)]--;
+            }
+            maxLen = Math.max(maxLen, j - i + 1);
+            j++;
+        }
+        
+        return maxLen;
+    }
+}

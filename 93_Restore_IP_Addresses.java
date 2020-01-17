@@ -16,37 +16,40 @@ Besides, leading zeros in the IPv4 is invalid. For example, the address
 */
 
 class Solution {
+    List<String> res = new LinkedList<>();
+    
     public List<String> restoreIpAddresses(String s) {
-        List<String> res = new ArrayList<>();
-        if (s == null || s.length() == 0 || s.length() > 12) {
+        if (s == null || s.length() < 4 || s.length() > 12) {
             return res;
         }
-        dfs(res, s, new StringBuilder(), 0, 0);
+        backtrack(s, new StringBuilder(), 0, 1);
         return res;
     }
     
-    private void dfs(List<String> res, String s, StringBuilder sb, int idx, int part) {
-        if (idx == s.length() && part == 4) {
+    private void backtrack(String s, StringBuilder sb, int p, int part) {
+        if (part == 5 && p == s.length()) {
             res.add(sb.toString());
             return;
-        } else if (idx == s.length() || part == 4) {
+        } else if (part == 5 || p == s.length()) {
             return;
         }
         
-        for (int i = 1; i <= 3 && i + idx <= s.length(); i++) { // length of current part
-            int num = Integer.valueOf(s.substring(idx, idx + i)); // each part < 255
-            if (i == 1 || (i == 2 && num >= 10) || (i == 3 && num >= 100 && num <= 255)) {
-                sb.append(num);
-                if (part < 3) {
-                    sb.append('.');
-                }
-                dfs(res, s, sb, idx + i, part + 1);
-                if (part < 3) {
-                    sb.deleteCharAt(sb.length() - 1); // IMP, delete '.'
-                }
-                sb.delete(sb.length() - i, sb.length()); // IMP, delete chars
+        int len = sb.length();
+        for (int i = 1; i <= 3 && p + i <= s.length(); i++) {
+            int num = Integer.parseInt(s.substring(p, p + i));
+            if (i == 2 && num < 10) {
+                continue;
             }
-        }     
+            if (i == 3 && (num < 100 || num > 255)) {
+                continue;
+            }
+            sb.append(num);
+            if (part < 4) {
+                sb.append('.');
+            }
+            backtrack(s, sb, p + i, part + 1);
+            sb.setLength(len);
+        }
     }
 }
 

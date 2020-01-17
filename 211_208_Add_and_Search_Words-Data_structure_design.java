@@ -1,14 +1,18 @@
 class WordDictionary {
-    public class TrieNode {
-        public TrieNode[] children = new TrieNode[26];
-        public boolean isWord;
+    class TrieNode {
+        TrieNode[] children = new TrieNode[26];
+        boolean isWord = false;
+        
+        TrieNode() {
+            
+        }
     }
     
-    private TrieNode root;
+    TrieNode root = new TrieNode();
     
     /** Initialize your data structure here. */
-    public WordDictionary() {
-        root = new TrieNode();
+    public Trie() {
+        
     }
     
     /** Adds a word into the data structure. */

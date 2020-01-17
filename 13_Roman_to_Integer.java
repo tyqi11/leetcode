@@ -19,19 +19,18 @@ class Solution {
 		map.put('D', 500);
 		map.put('M', 1000);
         
-        int n = s.length();
-        int res = map.get(s.charAt(n - 1));
-        int pre = res;
-        for (int i = n - 2; i >=0; i--) {
+        int limit = 1;
+        int sum = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
             int cur = map.get(s.charAt(i));
-            if (cur < pre) {
-                res -= cur;
+            if (cur >= limit) {
+                sum += cur;
+                limit = cur;
             } else {
-                res += cur;
+                sum -= cur;
             }
-            pre = cur;
         }
-        return res;
+        return sum;
     }
 }
 
