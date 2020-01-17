@@ -46,6 +46,22 @@ Fundamental problems, whose solutions can be part of a bigger problem. You need 
 
 Series of problems with similar way of thinking and implementing.
 
+### Backtracking
+
+Reference: [A general approach to backtracking questions in Java by issac3](https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning))
+
+| No.  | Title                                      |
+| ---- | ------------------------------------------ |
+|      | Subsets                                    |
+|      | Subsets II (contains duplicates)           |
+|      | Permutations                               |
+|      | Permutations II (contains duplicates)      |
+|      | Combination Sum                            |
+|      | Combination Sum (can't reuse same element) |
+|      | Palindrome Partitioning                    |
+
+
+
 ### Sliding Window
 
 * Substring
@@ -198,19 +214,25 @@ return ans;
 
 [Tree in graph theory](<https://leetcode.com/problems/minimum-height-trees/discuss/76055/Share-some-thoughts>) by @dietpepsi
 
-## Templates
-
-* [Union-Find]([template]Union-Find.java), shown as an answer to Problem 547. Friend Circles
-
-* [Topological Sort]([template][template]Topological-Sort)
-
-## Regex
+### Regex
 
 `str.split("\\.")`
 
 a dot ('.') in regex means "any character". If you mean a dot, you need a backslash
 
 to escape it. And it takes double backslash to create a single backslash in regex.
+
+### how to
+
+* create a new class and override `compareTo()` method: 692
+
+## Templates
+
+* [Union-Find]([template]Union-Find.java), shown as an answer to Problem 547. Friend Circles
+
+* [Topological Sort]([template][template]Topological-Sort)
+
+
 
 
 
