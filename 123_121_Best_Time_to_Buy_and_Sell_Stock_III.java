@@ -1,5 +1,6 @@
 /*
 # Dynamic Programming
+You must know this method to solve Stock IV.
 (credit to Tushar Roy: https://www.youtube.com/watch?v=oDhu5uGq_ic)
 
 This method can be generalized to k max transactions.
@@ -48,3 +49,30 @@ class Solution {
 Time complexity: O(k * n) -> O(n)
 Space complexity: O((k + 1) * n) -> O(n)
 */
+
+/******************************************************************/
+/*
+# O(n) solution
+credit to @weijiac, @xwa130: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/39611/Is-it-Best-Solution-with-O(n)-O(1).
+
+The buying price is the cost, so we save it as negative value. The bigger the cost
+is (-1 > -2), in reality, the cheaper the cost is (1 < 2).
+
+*/
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buy1 = Integer.MIN_VALUE;
+        int sell1 = 0; // money in our hand at the beginning
+        int buy2 = Integer.MIN_VALUE;
+        int sell2 = 0; // money in our hand at the beginning
+        
+        for (int p : prices) {
+            buy1 = Math.max(buy1, -p); // after a buy, how much money we have
+            sell1 = Math.max(sell1, buy1 + p); // after a sell
+            buy2 = Math.max(buy2, sell1 - p); // after a second buy
+            sell2 = Math.max(sell2, buy2 + p); // after a second sell
+        }
+        
+        return sell2;
+    }
+}

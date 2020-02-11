@@ -1,6 +1,6 @@
 /*
 # DFS
-# BFS (not shown here)
+# BFS
 
 1. Tracking the water flow from cells to the oceans makes us to iterate over all the
 m * n cells each time. It is very time consuming. So we try an opposite way and consider
@@ -69,3 +69,73 @@ class Solution {
 Time complexity: O(m * n), m * n is the number of cells in the matrix
 Space complexity: O(m * n)
 */
+
+/*************************************************************/
+// Solution 2: BFS
+class Solution {
+    int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    
+    public List<List<Integer>> pacificAtlantic(int[][] matrix) {
+        List<List<Integer>> res = new LinkedList<>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return res;
+        }
+        
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean[][] pVisited = new boolean[m][n];
+        boolean[][] aVisited = new boolean[m][n];
+        
+        Queue<int[]> pacific = new LinkedList<>();
+        Queue<int[]> atlantic = new LinkedList<>();
+        
+        for (int i = 0; i < m; i++) {
+            pacific.offer(new int[]{i, 0});
+            pVisited[i][0] = true;
+            atlantic.offer(new int[]{i, n - 1});
+            aVisited[i][n - 1] = true;
+        }
+        
+        for (int j = 0; j < n; j++) {
+            pacific.offer(new int[]{0, j});
+            pVisited[0][j] = true;
+            atlantic.offer(new int[]{m - 1, j});
+            aVisited[m - 1][j] = true;
+        }
+        
+        bfs(matrix, pVisited, pacific);
+        bfs(matrix, aVisited, atlantic);
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (pVisited[i][j] && aVisited[i][j]) {
+                    List<Integer> cur = new ArrayList<>();
+                    cur.add(i);
+                    cur.add(j);
+                    res.add(cur);
+                }
+            }
+        }
+        
+        return res;
+        
+     }
+    
+    private void bfs(int[][] matrix, boolean[][] visited, Queue<int[]> ocean) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        
+        while (!ocean.isEmpty()) {
+            int[] cur = ocean.poll();
+            int x = cur[0], y = cur[1];
+            for (int[] d : dirs) {
+                int i = x + d[0];
+                int j = y + d[1];
+                if (i >= 0 && i < m && j >= 0 && j < n && !visited[i][j] && matrix[i][j] >= matrix[x][y]) {
+                    visited[i][j] = true;
+                    ocean.offer(new int[]{i, j});
+                }
+            }
+        }
+    }
+}
