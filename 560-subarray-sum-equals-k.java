@@ -1,3 +1,8 @@
+/*
+# prefix sum
+
+*/
+
 class Solution {
     public int subarraySum(int[] nums, int k) {
         int count = 0;
@@ -15,3 +20,8 @@ class Solution {
     }
 }
 
+
+/*
+Time complexity: O(n)
+Space complexity: O(n)
+*/

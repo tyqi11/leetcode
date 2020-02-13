@@ -28,6 +28,25 @@ class Solution {
             }
             cur = cur.next;
         }
+        // this while loop can be optimized by checking ? == null separately
+        // while (h1 != null || h2 != null) {
+        //     if (h2 == null) {
+        //         pre.next = h1;
+        //         return dummy.next; // exit very early
+        //     }
+        //     if (h1 == null) {
+        //         pre.next = h2;
+        //         return dummy.next;
+        //     }
+        //     if (h1 != null && h1.val <= h2.val) {
+        //         pre.next = h1;
+        //         h1 = h1.next;
+        //     } else {
+        //         pre.next = h2;
+        //         h2 = h2.next;
+        //     }
+        //     pre = pre.next;
+        // }
         return dummy.next;
     }
 }
