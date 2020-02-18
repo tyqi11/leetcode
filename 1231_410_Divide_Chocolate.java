@@ -17,9 +17,8 @@ class Solution {
         
         int lo = 1, hi = sum;
         while (lo < hi) {
-            int mid = lo + (hi - lo) / 2 + 1; // sweetness limit for each 
-            int cuts = cutsWithCurSweetness(K, mid, sweetness);
-            if (cuts > K) { // too many cuts, increase each sweetness
+            int mid = lo + (hi - lo + 1) / 2; // minimum sweetness 
+            if (canDivide(K, mid, sweetness)) {
                 lo = mid;
             } else {
                 hi = mid - 1;
@@ -29,26 +28,21 @@ class Solution {
         return lo;
     }
     
-    private int cutsWithCurSweetness(int K, int mid, int[] sweetness) {
-        int cur = 0, cuts = 0;
+    private boolean canDivide(int K, int mid, int[] sweetness) {
+        int cur = 0, pieces = 0;
         for (int s : sweetness) {
-            if (cur + s >= mid) {
+            cur += s;
+            if (cur >= mid) {
                 cur = 0;
-                cuts++;
-                if (cuts > K) {
-                    break;
+                pieces++;
+                if (pieces > K) {
+                    return true;
                 }
-            } else {
-                cur += s;
             }
         }
-        return cuts;
+        return false;
     }
 }
-
-
-
-
 /*
 Time complexity: O()
 Space complexity: O()

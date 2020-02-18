@@ -7,35 +7,38 @@ of capacity.
 
 class Solution {
     public int shipWithinDays(int[] weights, int D) {
-        int low = Integer.MIN_VALUE; // max weight of all
-        int high = 0; // sum of weights
+        int lo = 0, hi = 0;
         for (int w : weights) {
-            low = Math.max(low, w);
-            high += w;
+            lo = Math.max(w, lo);
+            hi += w;
         }
-        while (low < high) {
-            int m = low + (high - low) / 2;
-            if (canShip(weights, m, D)) {
-                high = m;
+        
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2; // max weight capacity
+            if (canShipInD(mid, D, weights)) {
+                hi = mid;
             } else {
-                low = m + 1;
+                lo = mid + 1;
             }
         }
-        return low;
+        
+        return lo;
     }
     
-    private boolean canShip(int[] weights, int m, int D) {
-        int sum = 0;
-        int days = 0;
+    private boolean canShipInD(int cap, int D, int[] weights) {
+        int d = 1, cur = 0;
         for (int w : weights) {
-            if (sum + w > m) {
-                sum = 0;
-                days++;
+            cur += w;
+            if (cur > cap) {
+                cur = w;
+                d++;
+                if (d > D) {
+                    return false;
+                }
             }
-            sum += w;
         }
-        days++; // the last shipment
-        return days <= D;
+        
+        return true;
     }
 }
 
