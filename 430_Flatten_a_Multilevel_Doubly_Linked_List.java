@@ -18,6 +18,7 @@ empty, we finished all the connections.
 
 */
 
+// Solution 1: Iteration
 class Solution {
     public Node flatten(Node head) {
         if (head == null) {
@@ -48,3 +49,7 @@ class Solution {
 Time complexity: O(n)
 Space complexity: O(n), actually we use number-of-break-points space.
 */
+
+/**********************************************************/
+// Solutoin 2: Recursion
+// I cannot understand any of the posts. Need help.
