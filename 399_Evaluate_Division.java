@@ -1,4 +1,4 @@
-/*
+ /*
 # DFS
 # Union Find
 
@@ -83,54 +83,72 @@ Space complexity: O(V + E), O(E) for the graph map, and O(V) for the visited arr
 class Solution {
     Map<String, String> parent;
     Map<String, Double> ratio;
-        
+    
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        parent = new HashMap<>(); // <node, parent of the node>
-        ratio = new HashMap<>();  // <node, node / parent>
+        parent = new HashMap<>();
+        ratio = new HashMap<>();
         
         for (int i = 0; i < equations.size(); i++) {
             union(equations.get(i).get(0), equations.get(i).get(1), values[i]);
         }
         
         double[] ans = new double[queries.size()];
-        for (int i = 0; i < queries.size(); i++) {
+        for (int i = 0; i < ans.length; i++) {
             String first = queries.get(i).get(0);
             String second = queries.get(i).get(1);
-            if (!parent.containsKey(first) || !parent.containsKey(second) 
+            
+            // first or second never appears in equations, 
+            // or they have different ancestor so cannot be compared
+            if (!parent.containsKey(first) || !parent.containsKey(second)
                || !find(first).equals(find(second))) {
                 ans[i] = -1.0;
-            } else {
+            } else { // first / second = (first / ancestor) / (second / ancestor)
                 ans[i] = ratio.get(first) / ratio.get(second);
-            } // a / b = (a / root) / (b / root)
+            }
         }
         
         return ans;
     }
     
     private void union(String first, String second, double val) {
+        // all the charcters appeared should be in the parent and ratio map
         if (!parent.containsKey(first)) {
             parent.put(first, first);
             ratio.put(first, 1.0);
         }
+        
         if (!parent.containsKey(second)) {
             parent.put(second, second);
             ratio.put(second, 1.0);
         }
-        String p1 = find(first);
-        String p2 = find(second);
         
-        parent.put(p1, p2); // p1 / p2 = (b / p2) / (a / p1) * (a / b)
-        ratio.put(p1, ratio.get(second) / ratio.get(first) * val);         
+        String ancestor1 = find(first);
+        String ancestor2 = find(second);
+        
+        // anc1 / anc2 = (first / ratio.get(first)) / (second / ratio.get(second))
+        //             = ratio.get(second) / ratio.get(first) * (first / second)
+        parent.put(ancestor1, ancestor2);
+        ratio.put(ancestor1, ratio.get(second) / ratio.get(first) * val);
+        
+        // it is the same if we do parent.put(ancestor2, ancestor1)
+        // as long as we change the ratio accordingly
+        // parent.put(ancestor2, ancestor1);
+        // // anc2 / anc1 = (second / ratio.get(second)) / (first / ratio.get(first))
+        // //             = ratio.get(first) / ratio.get(second) * (second / first)
+        // ratio.put(ancestor2, ratio.get(first) / ratio.get(second) / val);
     }
     
     private String find(String s) {
         if (s.equals(parent.get(s))) {
             return s;
         }
+        
         String father = parent.get(s);
         String ancestor = find(father);
         parent.put(s, ancestor);
-        ratio.put(s, ratio.get(s) * ratio.get(father)); // s / ancestor = (s / father) * (father / ancestor)
+        // s / ancestor = (s / father) * (father / ancestor)
+        ratio.put(s, ratio.get(s) * ratio.get(father));
+        
         return ancestor;
     }
 }
