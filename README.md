@@ -149,6 +149,24 @@ Summary and explanation by [@wxd_sjtu](<https://leetcode.com/problems/sum-of-sub
 [sliding window maximum](https://leetcode.com/problems/sliding-window-maximum/description/)(challenge, monotone **queue**)
 [Max Chunks To Make Sorted II](https://leetcode.com/problems/Max-Chunks-To-Make-Sorted-II/description/)
 
+### Scheduling problems
+
+Summary and explanation by [@zzhai](https://leetcode.com/problems/meeting-rooms-ii/discuss/203658/HashMapTreeMap-resolves-Scheduling-Problem).
+
+56 Merge Intervals
+
+57 Insert Interval (hard)
+
+252 Meeting Rooms
+
+253 Meeting Rooms II
+
+729 My Calendar I
+
+731 My Calendar II
+
+732 My Calendar III (hard)
+
 ### Design problems
 
 | No.  | Title          |
