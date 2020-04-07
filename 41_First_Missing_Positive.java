@@ -33,13 +33,18 @@ class Solution {
             return 1;
         }
         int n = nums.length;
-        for (int i = 0; i < nums.length; i++) {
-            while (nums[i] > 0 && nums[i] <= n && 
-               nums[nums[i] - 1] != nums[i]) {
+        int i = 0;
+        while (i < n) {
+            //  need to change   &&   in range, has right pos   &&  right pos has wrong number   
+            if (nums[i] != i + 1 && nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
                 swap(nums, i, nums[i] - 1);
+            } else {
+                i++;
             }
-        } 
-        for (int i = 0; i < n; i++) {
+            
+        }
+
+        for (i = 0; i < n; i++) {
             if (nums[i] != i + 1) {
                 return i + 1;
             }
