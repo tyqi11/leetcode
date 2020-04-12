@@ -49,16 +49,36 @@ class Solution {
         int[] sums = new int[n];
         int min = Integer.MAX_VALUE;
         sums[0] = nums[0];
-        for (int i = 1; i < n; i++) { 
+        for (int i = 1; i < n; i++) {
             sums[i] = sums[i - 1] + nums[i];
         }
         for (int i = 0; i < n; i++) {
             int target = s + (i == 0 ? 0 : sums[i - 1]);
             int j = findWindowEnd(i, sums, target);
-            if (j != nums.length) {
+            if (j != nums.length) { // IMP!!! It is possible to return an invalid result.
                 min = Math.min(min, j - i + 1);
             }
         }
+
+        // Another way for binary search, same logic, but makes the invalid result more obvious
+        /**
+        for (int i = 0; i < n; i++) {
+            int lo = i, hi = n - 1;
+            while (lo < hi) { // ??
+                int mid = lo + (hi - lo) / 2;
+                int sum = prefixSum[mid] - prefixSum[i] + nums[i];
+                if (sum >= s) {
+                    hi = mid;
+                } else {
+                    lo = mid + 1;
+                }
+            }
+            // check again before updating the min length
+            if (prefixSum[lo] - prefixSum[i] + nums[i] >= s) {
+                len = Math.min(len, lo - i + 1);
+            }
+        }
+         */
         return min == Integer.MAX_VALUE ? 0 : min;
     }
     

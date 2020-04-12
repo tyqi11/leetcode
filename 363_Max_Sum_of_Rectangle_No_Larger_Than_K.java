@@ -1,7 +1,7 @@
 /*
+@Tushar Roy - Coding Made Simple
+https://www.youtube.com/watch?time_continue=19&v=yCQN096CwWM&feature=emb_logo
 
-1. How to get the largest number that is no more than k? set.ceiling()/set.floor()
-vs. higher() / lower() (not including equal)
 */
 
 class Solution {
@@ -18,14 +18,19 @@ class Solution {
                 }
                 // use TreeSet to get maxSum <= k in O(logn) time
                 TreeSet<Integer> set = new TreeSet<>();
-                set.add(0); // when cur - k <= 0, cur itself is the max sum
+/*IMP*/         set.add(0); // when cur - k <= 0, cur itself is the max sum
                 int cur = 0;
                 
-                for (int sum : preSum) {
-                    cur += sum;
-                    Integer num = set.ceiling(cur - k); // smallest num >= cur - k
-                    if (num != null) {
-                        max = Math.max(max, cur - num);
+                // we want to find a num with: cur - num <= k
+                // so we check if there is a num that: num >= cur - k
+                // the num should be as small as possible, as cur is set
+                // if there is this num, there is a cur - num <= k
+                // this cur - num is a possible result
+ /*IMP*/        for (int sum : preSum) {
+ /*IMP*/            cur += sum;
+ /*IMP*/            Integer num = set.ceiling(cur - k); // smallest num >= cur - k
+ /*IMP*/            if (num != null) {
+ /*IMP*/               max = Math.max(max, cur - num);
                     }
                     set.add(cur);
                 }
@@ -37,8 +42,7 @@ class Solution {
 }
 
 /*
-Time complexity: O(m * n * n * logm), m is number of rows, n is number of columns,
-									  good when rows is much more than columns, if 
-									  opposite, iterate from rows. 
+Time complexity: O(n * n * mlogm), m is number of rows, n is number of columns,
 Space complexity: O(m)
+(Assuming n = min(m, n), m = max(m, n))
 */
